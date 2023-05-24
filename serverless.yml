@@ -1,0 +1,18 @@
+service: short-url
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+plugins:
+  - serverless-prune-plugin
+  - serverless-offline
+
+functions: 
+  shortUrl:
+    handler: handler.shortUrl
+    events: 
+      - http: 
+          path: /shortUrl
+          method: post
+          cors: true
